@@ -61,6 +61,7 @@ public class Profiler extends ApplicationFrame {
 	 * @return
 	 */
 	public XYSeries timingLoop(int startN, int endMillis) {
+		System.out.println(this.getTitle());
         final XYSeries series = new XYSeries("Time (ms)");
 
 		int n = startN;

@@ -1,5 +1,6 @@
 package com.allendowney.thinkdast;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,9 +16,9 @@ public class ProfileListAdd {
 	 */
 	public static void main(String[] args) {
 		profileArrayListAddEnd();
-		//profileArrayListAddBeginning();
-		//profileLinkedListAddBeginning();
-		//profileLinkedListAddEnd();
+		profileArrayListAddBeginning();
+		profileLinkedListAddBeginning();
+		profileLinkedListAddEnd();
 	}
 
 	/**
@@ -47,6 +48,23 @@ public class ProfileListAdd {
 	 */
 	public static void profileArrayListAddBeginning() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			List<String> list;
+			@Override
+			public void setup(int n) {
+				list = new ArrayList<>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i = 0; i < n; i++) {
+					list.add(0, "a string");
+				}
+			}
+		};
+		int startN = 4000;
+		int endMillis = 1000;
+		runProfiler("ArrayList add start", timeable, startN, endMillis);
 	}
 
 	/**
@@ -54,6 +72,23 @@ public class ProfileListAdd {
 	 */
 	public static void profileLinkedListAddBeginning() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			LinkedList<String> list;
+			@Override
+			public void setup(int n) {
+				list = new LinkedList<>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i = 0; i < n; i++) {
+					list.add(0, "a string");
+				}
+			}
+		};
+		int startN = 10000;
+		int endMillis = 1000;
+		runProfiler("LinkedList add start", timeable, startN, endMillis);
 	}
 
 	/**
@@ -61,6 +96,25 @@ public class ProfileListAdd {
 	 */
 	public static void profileLinkedListAddEnd() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			LinkedList<String> list;
+
+			@Override
+			public void setup(int n) {
+				list = new LinkedList<>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i = 0; i < n; i++) {
+					list.add("a string");
+				}
+			}
+		};
+
+		int startN = 2000;
+		int endMillis = 1000;
+		runProfiler("LinkedList add end", timeable, startN, endMillis);
 	}
 
 	/**
